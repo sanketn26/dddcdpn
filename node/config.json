@@ -1,0 +1,8 @@
+{
+  "fileDataProcessor":"org.dddcdpn.node.verticle1.fileDataProcessor",
+  "fileWriterTopic":"org.dddcdpn.node.verticle1.fileWriterTopic",
+  "monitoredFileLocation":"",
+  "dataFolderLocation":"",
+  "publishDataTopic":"org.dddcdpn.node.datapublish",
+  "currentNodeDetails":"localhost:8080"
+}
