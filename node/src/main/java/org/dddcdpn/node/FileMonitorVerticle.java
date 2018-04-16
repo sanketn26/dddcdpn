@@ -14,7 +14,7 @@ public class FileMonitorVerticle extends AbstractVerticle {
         final String monitoredFolder = config().getString("monitoredFileLocation");
         final String fileDataProcessor = config().getString("fileDataProcessor");
         final FileSystem fs = vertx.fileSystem();
-        timerId = vertx.setTimer(1000, id -> {
+        timerId = vertx.setPeriodic(1000, id -> {
             logger.info("Reading contents of the Directory " + monitoredFolder);
             fs.readDir(monitoredFolder, listAsyncResult -> {
                 if(listAsyncResult.succeeded()){
