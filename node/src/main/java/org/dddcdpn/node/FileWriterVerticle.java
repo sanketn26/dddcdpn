@@ -63,7 +63,7 @@ public class FileWriterVerticle extends AbstractVerticle {
         fs.writeFile(filePath, Buffer.buffer(message.body()), writer->{
             if(writer.succeeded()){
                 logger.info("File Written to: " + filePath);
-                vertx.eventBus().publish(publishDataTopic, ""+ dataId + "|" + currentNodeDetails);
+                vertx.eventBus().publish(publishDataTopic, ""+ dataId + "#" + currentNodeDetails);
             }
             else{
                 logger.error("File cannot be Written to: " + filePath, writer.cause());

@@ -23,7 +23,7 @@ public class FileMonitorVerticle extends AbstractVerticle {
                             if (handler.succeeded()) {
                                 // Need to handle forwarding the message to the
                                 // the processing verticle
-                                vertx.eventBus().send(fileDataProcessor, handler.result());
+                                vertx.eventBus().send(fileDataProcessor, handler.result().toString());
                             } else {
                                 logger.error(
                                     "Could not read file",

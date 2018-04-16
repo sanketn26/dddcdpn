@@ -1,0 +1,8 @@
+{
+  "fileDataProcessor":"org.dddcdpn.node.verticle2.fileDataProcessor",
+  "fileWriterTopic":"org.dddcdpn.node.verticle2.fileWriterTopic",
+  "monitoredFileLocation":"/home/sanket/github/dddcdpn/node/target_2/drop",
+  "dataFolderLocation":"/home/sanket/github/dddcdpn/node/target_2/processed",
+  "publishDataTopic":"org.dddcdpn.node.datapublish",
+  "currentNodeDetails":"localhost:8081"
+}

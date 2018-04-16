@@ -1,0 +1,6 @@
+org/dddcdpn/node/StateManagerVerticle.class
+org/dddcdpn/node/MainVerticle.class
+org/dddcdpn/node/FileWriterVerticle.class
+org/dddcdpn/node/DataProcessorVerticle.class
+org/dddcdpn/node/FileMonitorVerticle.class
+org/dddcdpn/node/StateRecieverVerticle.class

@@ -22,10 +22,11 @@ public class StateManagerVerticle extends AbstractVerticle {
             }
             serverWebSocket.accept();
             serverWebSocket.textMessageHandler(data -> {
-                String[] commandDetails = data.split("|");
+                logger.info("Received query :" + data);
+                String[] commandDetails = data.split("#");
                 String commadType = commandDetails[0];
                 String parameter = commandDetails[1];
-                if(commadType == "GET"){
+                if(commadType.equals("GET")){
                     String file = monitoredFolder + "/" + parameter;
 
                     fs.exists(file, fileExistenceHandler -> {

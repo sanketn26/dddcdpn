@@ -20,8 +20,11 @@ public class StateRecieverVerticle extends AbstractVerticle {
         final String currentNodeDetails = config().getString("currentNodeDetails");
         newStateConsumer = vertx.eventBus().consumer(publishDataTopic);
         newStateConsumer.handler(stateHandler -> {
-            String[] data = stateHandler.body().split("|");
+            logger.info("Received Data " + stateHandler.body());
+            String[] data = stateHandler.body().split("#");
             String dataId = data[0];
+            logger.info("Data Id " + dataId);
+            logger.info("Comparing " + currentNodeDetails + " with " + data[1]);
             if(currentNodeDetails.equals(data[1]))
                 return;
             String[] nodeDetails = data[1].split(":");
@@ -29,6 +32,7 @@ public class StateRecieverVerticle extends AbstractVerticle {
             options.setDefaultPort(Integer.parseInt(nodeDetails[1]));
             vertx.createHttpClient(options).websocket("/data", webSocket -> {
                 webSocket.textMessageHandler(content -> {
+                    logger.info("Received Content :" + dataId);
                     // To act on recieved data from websocket server
                     String fileName = DigestUtils.sha256Hex(content);
                     FileSystem fs = vertx.fileSystem();
@@ -43,7 +47,8 @@ public class StateRecieverVerticle extends AbstractVerticle {
                         }
                     });
                 });
-                webSocket.writeTextMessage("GET|"+ dataId);
+                logger.info("Requesting for Data :" + dataId);
+                webSocket.writeTextMessage("GET#"+ dataId);
             });
         });
     }
